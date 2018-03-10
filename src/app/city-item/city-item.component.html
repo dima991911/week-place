@@ -1,0 +1,12 @@
+<div class="weather-item-name">
+  {{ city.name }}
+</div>
+<div class="weather-item-temp">
+  {{ city.temp }}
+</div>
+<div class="weather-item-description">
+  {{ city.description }}
+</div>
+<div class="weather-item-icon">
+  <img src="{{ weatherService.getIcon(city.icon) }}" alt="Icon">
+</div>

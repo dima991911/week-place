@@ -1,0 +1,31 @@
+.flex-align {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+.weather-item {
+    margin-top: -1px;
+    background: #F4F2FF;
+    color: #575759;
+    border: 1px solid gray;
+}
+
+.weather-item-name {
+    width: 30%;
+}
+
+.red {
+    background: red;
+}
+
+.blue {
+    background: blue;
+}
