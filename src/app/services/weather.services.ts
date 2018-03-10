@@ -26,6 +26,17 @@ export class WeatherService {
         return this.http.get(this.api + city + "&lang=UA&units=metric&APPID=9885d00a22b9c36f1436282f1e81c462");
     }
 
+    changeStatus(city) {
+        let cities = JSON.parse(localStorage.getItem('cities'));
+        for (let i = 0; i < cities.length; i++) {
+            if(cities[i].name == city.name) {
+                cities[i].status = city.status;
+                break;
+            }
+        }
+        localStorage.setItem('cities', JSON.stringify(cities));
+    }
+
     getIcon(icon) {
         let src = `http://openweathermap.org/img/w/${icon}.png`;
 

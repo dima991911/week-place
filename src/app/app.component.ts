@@ -9,14 +9,14 @@ import { WeatherItem } from './shared/weather-item';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-      weather: any = [];
+      weather: WeatherItem[] = [];
+      min_temp: number;
+      max_temp: number;
 
       constructor( private weatherService: WeatherService ) {}
 
       ngOnInit() {
           let cities = this.weatherService.getCities();
-
-          console.log(cities);
 
           cities.forEach((city, i, arr) => {
               if (i == arr.length - 1) {
@@ -31,9 +31,11 @@ export class AppComponent implements OnInit {
                           let obj: WeatherItem = new WeatherItem(description, temp, name, status, icon);
                           this.weather.push(obj);
                       }, error => {
-                          console.log(error)
+                          console.log(error);
                       }, () => {
                           this.sortWeather();
+                          this.min_temp = this.weather[0].temp;
+                          this.max_temp = this.weather[this.weather.length - 1].temp;
                       });
               } else {
                   this.weatherService.getWeather(city.name)

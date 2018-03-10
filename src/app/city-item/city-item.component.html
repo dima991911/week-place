@@ -1,4 +1,7 @@
-<div class="weather-item-name">
+<div class="weather-item-name"
+     [class.neutral]="city.status == 'neutral'"
+     [class.good]="city.status == 'good'"
+     (click)="changeStatus(city)">
   {{ city.name }}
 </div>
 <div class="weather-item-temp">

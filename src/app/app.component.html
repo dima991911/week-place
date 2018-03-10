@@ -5,11 +5,12 @@
 <div class="container">
     <div (click)="sortWeather()">sort</div>
     <div class="">
-        <app-city-item *ngFor="let city of weather; let i = index"
+        <app-city-item *ngFor="let city of weather;"
                        [city]="city"
                        class="weather-item flex-align"
-                       [class.red]="i == weather.length - 1"
-                       [class.blue]="i == 0">
+                       (change)="changeStatus($event)"
+                       [class.red]="city.temp == max_temp"
+                       [class.blue]="city.temp == min_temp">
         </app-city-item>
     </div>
 </div>
