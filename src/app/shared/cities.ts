@@ -34,5 +34,17 @@ export const cities = [
     {
         name: 'Sofia',
         status: 'neutral'
+    },
+    {
+        name: 'Zagreb',
+        status: 'neutral'
+    },
+    {
+        name: 'Nicosia',
+        status: 'neutral'
+    },
+    {
+        name: 'Prague',
+        status: 'neutral'
     }
 ];

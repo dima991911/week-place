@@ -1,0 +1,45 @@
+.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background: red;
+}
+
+.search {
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 80%;
+    background: ghostwhite;
+}
+
+.serach__input {
+    padding: 5px 10px;
+    width: 100%;
+    display: block;
+    border: none;
+    box-shadow: 0 1px 1px rgb(230, 230, 230);
+    box-sizing: border-box;
+}
+
+.search__error {
+    color: red;
+}
+
+.search__add {
+    padding: 10px 15px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search__add:disabled {
+    opacity: 0.5;
+    cursor: default;
+}

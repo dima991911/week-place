@@ -26,7 +26,7 @@ export class WeatherService {
         return this.http.get(this.api + city + "&lang=UA&units=metric&APPID=9885d00a22b9c36f1436282f1e81c462");
     }
 
-    changeStatus(city) {
+    changeStatus(city: WeatherItem) {
         let cities = JSON.parse(localStorage.getItem('cities'));
         for (let i = 0; i < cities.length; i++) {
             if(cities[i].name == city.name) {
@@ -34,6 +34,21 @@ export class WeatherService {
                 break;
             }
         }
+        localStorage.setItem('cities', JSON.stringify(cities));
+    }
+
+    checkCity(city) {
+        return this.http.get(this.api + city + "&lang=UA&units=metric&APPID=9885d00a22b9c36f1436282f1e81c462");
+    }
+
+    addCity(city) {
+        let cities = JSON.parse(localStorage.getItem('cities'));
+        let obj = {
+            name: city,
+            status: 'neutral'
+        };
+
+        cities.push(obj);
         localStorage.setItem('cities', JSON.stringify(cities));
     }
 

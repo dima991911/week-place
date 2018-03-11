@@ -2,13 +2,18 @@
 <p>{{ weather?.main.temp }}</p>
 <img src="{{ weatherService.getIcon(weather?.weather[0].icon) }}" alt="Stage">-->
 
+<app-modal-window class="background"
+        *ngIf="modalService.getModal()"
+        (click)="closeModal($event)"
+        (add)="addCity($event)">
+</app-modal-window>
+
 <div class="container">
-    <div (click)="sortWeather()">sort</div>
+    <button (click)="triggerModal()">Модальне</button>
     <div class="">
         <app-city-item *ngFor="let city of weather;"
                        [city]="city"
                        class="weather-item flex-align"
-                       (change)="changeStatus($event)"
                        [class.red]="city.temp == max_temp"
                        [class.blue]="city.temp == min_temp">
         </app-city-item>
