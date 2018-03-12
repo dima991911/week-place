@@ -1,3 +1,40 @@
+.flex-align {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.weather-item-name {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.weather-item-temp {
+    font-size: 18px;
+}
+
+.weather-item-temp__c {
+    font-weight: bold;
+}
+
+.weather-item-description {
+    margin-bottom: -10px;
+}
+
+.weather-item-description img {
+    vertical-align: middle;
+}
+
+.weather-item-status {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    height: 25px;
+    width: 25px;
+    background: #FF85ED;
+}
+
 .neutral {
     color: green;
 }

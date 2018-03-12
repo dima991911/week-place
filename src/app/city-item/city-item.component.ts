@@ -12,7 +12,7 @@ export class CityItemComponent implements OnInit {
   @Input() city: WeatherItem;
   @Output() change: EventEmitter<any> = new EventEmitter();
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(public weatherService: WeatherService) { }
 
   ngOnInit() {
 

@@ -9,11 +9,11 @@
 </app-modal-window>
 
 <div class="container">
-    <button (click)="triggerModal()">Модальне</button>
-    <div class="">
-        <app-city-item *ngFor="let city of weather;"
+    <button (click)="triggerModal()" class="add-city__btn">ДОДАТИ МІСТО</button>
+    <div class="flex-align">
+        <app-city-item *ngFor="let city of weather"
                        [city]="city"
-                       class="weather-item flex-align"
+                       class="weather-item"
                        [class.red]="city.temp == max_temp"
                        [class.blue]="city.temp == min_temp">
         </app-city-item>

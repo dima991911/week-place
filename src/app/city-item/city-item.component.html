@@ -1,15 +1,17 @@
-<div class="weather-item-name"
-     [class.neutral]="city.status == 'neutral'"
-     [class.good]="city.status == 'good'"
-     (click)="changeStatus(city)">
-  {{ city.name }}
+<div class="flex-align">
+  <div class="weather-item-name"
+       (click)="changeStatus(city)">
+    {{ city.name }}
+  </div>
+  <div class="weather-item-temp">
+    {{ city.temp }} <span class="weather-item-temp__c">&#176;C</span>
+  </div>
 </div>
-<div class="weather-item-temp">
-  {{ city.temp }}
-</div>
+
 <div class="weather-item-description">
-  {{ city.description }}
+  {{ city.description }} <img src="{{ weatherService.getIcon(city.icon) }}" alt="Icon">
 </div>
-<div class="weather-item-icon">
-  <img src="{{ weatherService.getIcon(city.icon) }}" alt="Icon">
+
+<div class="weather-item-status" *ngIf="city.status == 'good'">
+
 </div>

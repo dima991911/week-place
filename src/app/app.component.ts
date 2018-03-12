@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { WeatherService } from './services/weather.services';
 import { ModalService } from './services/modal.service';
@@ -12,8 +12,8 @@ import { WeatherItem } from './shared/weather-item';
 })
 export class AppComponent implements OnInit {
       weather: WeatherItem[] = [];
-      min_temp: number;
-      max_temp: number;
+      min_temp: number = +Infinity;
+      max_temp: number = -Infinity;
 
       constructor( public weatherService: WeatherService, public modalService: ModalService ) {}
 
@@ -21,37 +21,20 @@ export class AppComponent implements OnInit {
           let cities = this.weatherService.getCities();
 
           cities.forEach((city, i, arr) => {
-              if (i == arr.length - 1) {
-                  this.weatherService.getWeather(city.name)
-                      .subscribe(data => {
-                          let description = data['weather'][0].description.toUpperCase(),
-                              temp = Math.round(data['main'].temp),
-                              name = city.name,
-                              status = city.status,
-                              icon = data['weather'][0].icon;
+              this.weatherService.getWeather(city.name)
+                  .subscribe(data => {
+                      let description = data['weather'][0].description.toUpperCase(),
+                          temp = Math.round(data['main'].temp),
+                          name = city.name,
+                          status = city.status,
+                          icon = data['weather'][0].icon;
+                      if (temp > this.max_temp) this.max_temp = temp;
+                      if (temp < this.min_temp) this.min_temp = temp;
 
-                          let obj: WeatherItem = new WeatherItem(description, temp, name, status, icon);
-                          this.weather.push(obj);
-                      }, error => {
-                          console.log(error);
-                      }, () => {
-                          this.sortWeather();
-                          this.min_temp = this.weather[0].temp;
-                          this.max_temp = this.weather[this.weather.length - 1].temp;
-                      });
-              } else {
-                  this.weatherService.getWeather(city.name)
-                      .subscribe(data => {
-                          let description = data['weather'][0].description.toUpperCase(),
-                              temp = Math.round(data['main'].temp),
-                              name = city.name,
-                              status = city.status,
-                              icon = data['weather'][0].icon;
-
-                          let obj: WeatherItem = new WeatherItem(description, temp, name, status, icon);
-                          this.weather.push(obj);
-                      });
-              }
+                      let obj: WeatherItem = new WeatherItem(description, temp, name, status, icon);
+                      this.weather.push(obj);
+                      this.sortWeather();
+                  });
           });
       }
 

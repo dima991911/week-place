@@ -1,15 +1,15 @@
-<div class="close" (click)="closeModal()">
-
-</div>
-
 <div class="search">
+  <h4 class="search__h4">Додати місто</h4>
+
+  <div class="close" (click)="closeModal()">X</div>
+
   <input type="text" class="serach__input"
          #input
          ngModel
          (input)="checkCity(input.value)">
 
   <p class="search__error"
-     *ngIf="error">Місто не знайдено</p>
+     *ngIf="error">{{ errorMsg }}</p>
 
   <button class="search__add"
           [disabled]="error || !input.value"

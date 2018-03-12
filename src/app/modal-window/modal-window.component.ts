@@ -10,6 +10,7 @@ import { WeatherService } from '../services/weather.services';
 })
 export class ModalWindowComponent implements OnInit {
   error: boolean = false;
+  errorMsg: string = 'Не знайденно';
   @Output() add: EventEmitter<any> = new EventEmitter();
 
   constructor(public modalService: ModalService, public weatherService: WeatherService) { }
