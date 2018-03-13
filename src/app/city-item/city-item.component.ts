@@ -11,11 +11,18 @@ import { WeatherItem } from '../shared/weather-item';
 export class CityItemComponent implements OnInit {
   @Input() city: WeatherItem;
   @Output() change: EventEmitter<any> = new EventEmitter();
+  @Output() delete: EventEmitter<any> = new EventEmitter();
 
   constructor(public weatherService: WeatherService) { }
 
   ngOnInit() {
 
+  }
+
+  deleteCity() {
+    this.weatherService.deleteCity(this.city.name);
+
+    this.delete.emit(this.city);
   }
 
   changeStatus(city) {

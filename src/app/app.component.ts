@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
               .subscribe(data => {
                   let description = data['weather'][0].description.toUpperCase(),
                       temp = Math.round(data['main'].temp),
-                      name = city,
+                      name = city.charAt(0).toUpperCase() + city.substr(1).toLowerCase(),
                       status = 'neutral',
                       icon = data['weather'][0].icon;
 
@@ -73,21 +73,36 @@ export class AppComponent implements OnInit {
               });
     }
 
-      /*getWeather(cities) {
-          cities.forEach(city => {
-              this.weatherService.getWeather(city.name)
-                  .subscribe(data => {
-                      let description = data['weather'][0].description.toUpperCase(),
-                          temp = Math.round(data['main'].temp),
-                          name = city.name,
-                          status = city.status,
-                          icon = data['weather'][0].icon;
-
-                      let obj: WeatherItem = new WeatherItem(description, temp, name, status, icon);
-                      this.weather.push(obj);
-                  });
+    deleteCity(event, city) {
+          let index = this.weather.findIndex(elem => {
+              if (elem.name == city.name) {
+                  return true;
+              }
           });
-      }*/
+
+          this.weather.splice(index, 1);
+          this.checkTemp();
+    }
+
+    changeStatus(event, city) {
+          if (event.target.className != 'delete') {
+              let citiesStorage = JSON.parse(localStorage.getItem('cities'));
+
+              for (let i = 0; i < citiesStorage.length; i++) {
+                  if (citiesStorage[i].name == city.name) {
+                      citiesStorage[i].status = city.status == 'neutral' ? 'visited' : 'neutral';
+                      break;
+                  }
+              }
+              localStorage.setItem('cities', JSON.stringify(citiesStorage));
+              city.status = city.status == 'neutral' ? 'visited' : 'neutral';
+          }
+    }
+
+    checkTemp(){
+          this.min_temp = this.weather[0].temp;
+          this.max_temp = this.weather[this.weather.length - 1].temp;
+    }
 
       sortWeather() {
           this.weather.sort(function (a, b) {

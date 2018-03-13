@@ -1,6 +1,9 @@
+<div class="delete" (click)="deleteCity()">
+
+</div>
+
 <div class="flex-align">
-  <div class="weather-item-name"
-       (click)="changeStatus(city)">
+  <div class="weather-item-name">
     {{ city.name }}
   </div>
   <div class="weather-item-temp">
@@ -12,6 +15,6 @@
   {{ city.description }} <img src="{{ weatherService.getIcon(city.icon) }}" alt="Icon">
 </div>
 
-<div class="weather-item-status" *ngIf="city.status == 'good'">
+<div class="weather-item-status" *ngIf="city.status == 'visited'">
 
 </div>

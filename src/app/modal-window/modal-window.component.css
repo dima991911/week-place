@@ -27,6 +27,7 @@
     padding: 0;
     margin: 0;
     font-size: 30px;
+    color: gray;
 }
 
 .serach__input {
@@ -38,13 +39,23 @@
     box-sizing: border-box;
 }
 
+.msg {
+    margin: 0;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
 .search__error {
     color: red;
 }
 
+.search__complete {
+    color: green;
+}
+
 .search__add {
     padding: 10px 15px;
-    margin-top: 10px;
+    margin-top: 5px;
     border: none;
     cursor: pointer;
     font-weight: bold;

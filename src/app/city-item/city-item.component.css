@@ -1,3 +1,20 @@
+.delete {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    height: 20px;
+    width: 20px;
+    background: gray;
+    border-radius: 50px;
+    border: 3px solid white;
+    display: none;
+    transition: 1s;
+}
+
+:host:hover .delete {
+    display: block;
+}
+
 .flex-align {
     display: flex;
     justify-content: space-between;

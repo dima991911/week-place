@@ -3,15 +3,20 @@
 
   <div class="close" (click)="closeModal()">X</div>
 
-  <input type="text" class="serach__input"
-         #input
-         ngModel
-         (input)="checkCity(input.value)">
+  <form>
+    <input type="text" class="serach__input"
+           #input
+           (input)="checkCity(input.value)">
 
-  <p class="search__error"
-     *ngIf="error">{{ errorMsg }}</p>
+    <p class="msg search__error"
+       *ngIf="errorMsg">{{ errorMsg }}</p>
+    <p class="msg search__complete"
+       *ngIf="messageTrue">
+      Місто додано!
+    </p>
 
-  <button class="search__add"
-          [disabled]="error || !input.value"
-          (click)="addCity(input.value)">ДОДАТИ</button>
+    <button class="search__add"
+            [disabled]="disabled"
+            (click)="addCity(input)">ДОДАТИ</button>
+  </form>
 </div>

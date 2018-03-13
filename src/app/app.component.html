@@ -10,10 +10,30 @@
 
 <div class="container">
     <button (click)="triggerModal()" class="add-city__btn">ДОДАТИ МІСТО</button>
+
+    <div class="info">
+        <ul class="info-list">
+            <li class="info-list-item">
+                <div class="info-list-item__color blue"></div>
+                <div class="info-list-item__description"> - Місто з найменшою температурою</div>
+            </li>
+            <li class="info-list-item">
+                <div class="info-list-item__color red"></div>
+                <div class="info-list-item__description"> - Місто з найбільшою температурою</div>
+            </li>
+            <li class="info-list-item">
+                <div class="info-list-item__color violet"></div>
+                <div class="info-list-item__description"> - Місто позначене як відвідане (нажміть на місто щоб змінити статус)</div>
+            </li>
+        </ul>
+    </div>
+
     <div class="flex-align">
         <app-city-item *ngFor="let city of weather"
                        [city]="city"
                        class="weather-item"
+                       (click)="changeStatus($event, city)"
+                       (delete)="deleteCity($event, city)"
                        [class.red]="city.temp == max_temp"
                        [class.blue]="city.temp == min_temp">
         </app-city-item>

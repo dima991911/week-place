@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'
 
 import { WeatherService } from './services/weather.services';
 import { ModalService } from './services/modal.service';
@@ -17,7 +18,8 @@ import { ModalWindowComponent } from './modal-window/modal-window.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     WeatherService,

@@ -41,14 +41,50 @@ export class WeatherService {
         return this.http.get(this.api + city + "&lang=UA&units=metric&APPID=9885d00a22b9c36f1436282f1e81c462");
     }
 
-    addCity(city) {
+    checkCityLocal(city) {
+        city = city.charAt(0).toUpperCase() + city.substr(1).toLowerCase();
+
         let cities = JSON.parse(localStorage.getItem('cities'));
+        let check = true;
+
+        for (let i = 0; i < cities.length; i++) {
+            if ( cities[i].name == city) {
+                check = false;
+                break;
+            }
+        }
+
+        if(check) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    addCity(city) {
+        city = city.charAt(0).toUpperCase() + city.substr(1).toLowerCase();
+        let cities = JSON.parse(localStorage.getItem('cities'));
+
         let obj = {
             name: city,
             status: 'neutral'
         };
 
         cities.push(obj);
+        localStorage.setItem('cities', JSON.stringify(cities));
+        return true;
+    }
+
+    deleteCity(city) {
+        let cities = JSON.parse(localStorage.getItem('cities'));
+
+        for (let i = 0; i < cities.length; i++) {
+            if (cities[i].name == city) {
+                cities.splice(i, 1);
+                break;
+            }
+        }
+
         localStorage.setItem('cities', JSON.stringify(cities));
     }
 
