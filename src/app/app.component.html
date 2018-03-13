@@ -9,7 +9,10 @@
 </app-modal-window>
 
 <div class="container">
-    <button (click)="triggerModal()" class="add-city__btn">ДОДАТИ МІСТО</button>
+    <div class="flex-align">
+        <div><button (click)="triggerModal()" class="add-city__btn">ДОДАТИ МІСТО</button></div>
+        <div><a href="https://github.com/dima991911/week-place.git" target="_blank"><img src="assets/github.png" alt=""></a></div>
+    </div>
 
     <div class="info">
         <ul class="info-list">
@@ -27,7 +30,7 @@
             </li>
         </ul>
     </div>
-
+    
     <div class="flex-align">
         <app-city-item *ngFor="let city of weather"
                        [city]="city"
