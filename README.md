@@ -1,3 +1,10 @@
+# Insctuction 
+
+1 - git clone https://github.com/dima991911/week-place.git foldername <br/>
+2 - cd foldername <br/>
+3 - npm i <br/>
+4 - npm start
+
 # PlaceWeek
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
