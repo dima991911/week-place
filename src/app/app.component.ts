@@ -42,12 +42,6 @@ export class AppComponent implements OnInit {
         this.modalService.openCloseModal();
     }
 
-    closeModal(event) {
-          if (event.target.className == 'background') {
-              this.modalService.openCloseModal();
-          }
-    }
-
     addCity(city) {
           this.weatherService.getWeather(city)
               .subscribe(data => {

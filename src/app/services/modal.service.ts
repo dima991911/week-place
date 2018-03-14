@@ -12,6 +12,10 @@ export class ModalService {
         this.status = !this.status;
     }
 
+    closeModal() {
+        this.status = false;
+    }
+
     getModal() {
         return this.status;
     }

@@ -1,15 +1,10 @@
-<!--
-<p>{{ weather?.main.temp }}</p>
-<img src="{{ weatherService.getIcon(weather?.weather[0].icon) }}" alt="Stage">-->
-
 <app-modal-window class="background"
         *ngIf="modalService.getModal()"
-        (click)="closeModal($event)"
         (add)="addCity($event)">
 </app-modal-window>
 
 <div class="container">
-    <div class="flex-align">
+    <div class="flex-align-top">
         <div><button (click)="triggerModal()" class="add-city__btn">ДОДАТИ МІСТО</button></div>
         <div><a href="https://github.com/dima991911/week-place.git" target="_blank"><img src="assets/github.png" alt=""></a></div>
     </div>
