@@ -12,13 +12,15 @@ import { WeatherItem } from '../shared/weather-item';
   animations: [
       trigger('visited', [
           state('neutral', style({
-            opacity: 0
+              transform: 'scale(0)',
+              opacity: 0
           })),
           state('visited', style({
-            opacity: 1
+              transform: 'scale(1)',
+              opacity: 1
           })),
-          transition('neutral => visited', animate('150ms ease-in')),
-          transition('visited => neutral', animate('150ms ease-out'))
+          transition('neutral => visited', animate('100ms ease-in')),
+          transition('visited => neutral', animate('100ms ease-out'))
       ])
   ]
 })

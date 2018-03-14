@@ -27,13 +27,22 @@
     </div>
     
     <div class="flex-align">
-        <app-city-item *ngFor="let city of weather"
+        <div class="flex-align-wrapper" *ngFor="let city of weather">
+            <app-city-item [city]="city"
+                           class="weather-item"
+                           (click)="changeStatus($event, city)"
+                           (delete)="deleteCity($event, city)"
+                           [class.red]="city.temp == max_temp"
+                           [class.blue]="city.temp == min_temp">
+            </app-city-item>
+        </div>
+        <!--<app-city-item *ngFor="let city of weather"
                        [city]="city"
                        class="weather-item"
                        (click)="changeStatus($event, city)"
                        (delete)="deleteCity($event, city)"
                        [class.red]="city.temp == max_temp"
                        [class.blue]="city.temp == min_temp">
-        </app-city-item>
+        </app-city-item>-->
     </div>
 </div>
