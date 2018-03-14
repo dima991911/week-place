@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
                           name = city.name,
                           status = city.status,
                           icon = data['weather'][0].icon;
+
                       if (temp > this.max_temp) this.max_temp = temp;
                       if (temp < this.min_temp) this.min_temp = temp;
 
