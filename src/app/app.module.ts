@@ -10,12 +10,14 @@ import { ModalService } from './services/modal.service';
 import { AppComponent } from './app.component';
 import { CityItemComponent } from './city-item/city-item.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
+import { SomeComponent } from './some/some.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CityItemComponent,
-    ModalWindowComponent
+    ModalWindowComponent,
+    SomeComponent
   ],
   imports: [
     BrowserModule,
